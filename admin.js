@@ -49,9 +49,14 @@ if (loginForm) {
             return;
         }
 
-        const email = document.getElementById('admin-email').value;
+        let email = document.getElementById('admin-email').value.trim();
         const password = document.getElementById('admin-password').value;
         const btn = document.getElementById('btn-login');
+        
+        // Se o usuário digitou apenas "playgames", transforma em email pro Supabase aceitar
+        if (!email.includes('@')) {
+            email = email + '@playgames.com';
+        }
         
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Entrando...';
         btn.disabled = true;
