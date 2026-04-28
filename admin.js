@@ -59,18 +59,40 @@ if (loginForm) {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Entrando...';
         btn.disabled = true;
 
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
-        });
+        try {
+            let res = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            });
 
-        if (error) {
-            errorMsg.textContent = "Erro: " + error.message;
+            // Se falhar porque não existe, tenta cadastrar automaticamente!
+            if (res.error && res.error.message.includes('Invalid login credentials')) {
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Criando usuário...';
+                res = await supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                });
+                
+                if (!res.error && res.data.user) {
+                    errorMsg.style.color = '#1ed760';
+                    errorMsg.textContent = "Conta criada com sucesso! Faça login novamente se não entrar automático.";
+                }
+            }
+
+            if (res.error) {
+                errorMsg.style.color = '#ff4d4d';
+                errorMsg.textContent = "Erro: " + res.error.message;
+                btn.innerHTML = 'Entrar no Painel <i class="fa-solid fa-arrow-right"></i>';
+                btn.disabled = false;
+            } else {
+                errorMsg.textContent = "";
+                checkSession();
+            }
+        } catch (err) {
+            errorMsg.style.color = '#ff4d4d';
+            errorMsg.textContent = "Erro crítico do sistema: " + err.message;
             btn.innerHTML = 'Entrar no Painel <i class="fa-solid fa-arrow-right"></i>';
             btn.disabled = false;
-        } else {
-            errorMsg.textContent = "";
-            checkSession();
         }
     });
 }
