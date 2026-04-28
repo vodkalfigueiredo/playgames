@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayGames | Escolha sua Plataforma</title>
+    <meta name="description" content="PlayGames — sua loja de jogos digitais premium. Escolha entre PlayStation e Xbox e explore o melhor catálogo de jogos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="portal-body">
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="custom-cursor">
+        <div class="cursor-ring"></div>
+        <div class="cursor-dot"></div>
+    </div>
+
+    <!-- Flash Overlay for exit animation -->
+    <div id="exit-flash" class="exit-flash"></div>
+
+    <!-- ===== INTRO SCREEN ===== -->
+    <div id="intro-screen" class="intro-screen">
+        <div class="intro-logo">
+            <div class="intro-logo-icon">
+                <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div class="intro-logo-text">PlayGames</div>
+            <div class="intro-tagline">O Universo dos Jogos Digitais</div>
+            <div class="intro-bar"></div>
+        </div>
+        <div class="intro-particles" id="intro-particles-canvas-wrapper">
+            <canvas id="intro-canvas"></canvas>
+        </div>
+    </div>
+
+    <!-- ===== PLATFORM SELECTOR ===== -->
+    <div id="platform-selector" class="platform-selector hidden">
+
+        <!-- Divider Line -->
+        <div class="divider-line" id="divider-line"></div>
+
+        <!-- PlayStation Half -->
+        <div class="ps-half platform-half" id="ps-half" data-platform="ps">
+            <canvas class="particles-canvas" id="ps-canvas"></canvas>
+
+            <div class="half-content">
+                <!-- Ambient glow orbs -->
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+
+                <!-- Platform logo icon -->
+                <div class="platform-icon-wrapper" id="ps-icon">
+                    <i class="fa-brands fa-playstation"></i>
+                </div>
+
+                <!-- Decorative ring -->
+                <div class="icon-ring"></div>
+
+                <!-- Text content -->
+                <div class="half-text">
+                    <h2 class="platform-name">PlayStation</h2>
+                    <p class="platform-sub">PS4 &amp; PS5 — Exclusivos incríveis</p>
+                    <a href="playstation.html" class="enter-btn ps-btn" id="ps-enter-btn">
+                        <span>Entrar no Universo</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Floating badges -->
+                <div class="float-badge badge-top-left">PS5</div>
+                <div class="float-badge badge-bottom-right">PS4</div>
+            </div>
+        </div>
+
+        <!-- Xbox Half -->
+        <div class="xbox-half platform-half" id="xbox-half" data-platform="xbox">
+            <canvas class="particles-canvas" id="xbox-canvas"></canvas>
+
+            <div class="half-content">
+                <!-- Ambient glow orbs -->
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+
+                <!-- Platform logo icon -->
+                <div class="platform-icon-wrapper" id="xbox-icon">
+                    <i class="fa-brands fa-xbox"></i>
+                </div>
+
+                <!-- Decorative ring -->
+                <div class="icon-ring"></div>
+
+                <!-- Text content -->
+                <div class="half-text">
+                    <h2 class="platform-name">Xbox</h2>
+                    <p class="platform-sub">Series X|S — Power your dreams</p>
+                    <a href="xbox.html" class="enter-btn xbox-btn" id="xbox-enter-btn">
+                        <span>Entrar no Universo</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Floating badges -->
+                <div class="float-badge badge-top-right">Series X</div>
+                <div class="float-badge badge-bottom-left">Series S</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayGames | Detalhes do Jogo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="details-body">
+    <!-- Fundo de Partículas Escuro -->
+    <div id="particles-js"></div>
+    
+    <!-- Fundo da Imagem Blurzada (Injetado via JS) -->
+    <div id="details-bg-blur" class="details-bg-blur"></div>
+
+    <nav class="navbar" style="background: transparent; border: none; z-index: 100; position: absolute; width: 100%;">
+        <div class="nav-left">
+            <a href="javascript:history.back()" class="brand-logo" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span style="font-size: 1.2rem;">Voltar</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="details-main" id="details-container">
+        <!-- O conteúdo será injetado pelo JavaScript -->
+        <div style="color: white; font-family: 'Outfit'; font-size: 2rem; margin: auto;">Carregando Jogo...</div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
