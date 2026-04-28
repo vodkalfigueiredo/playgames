@@ -4,136 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo | PlayGames</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Base styles for variables and resets -->
-    <link rel="stylesheet" href="admin.css"> <!-- Admin specific styles -->
-    <script src="https://kit.fontawesome.com/0bdffea5e9.js" crossorigin="anonymous"></script>
-    <!-- Supabase SDK (Carregado via CDN) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="admin-body">
     
-    <!-- Tela de Login -->
+    <!-- Background Animado -->
+    <div class="admin-bg">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <!-- Tela de Login Clean -->
     <div id="login-section" class="admin-section active">
         <div class="login-card">
-            <div class="brand-logo login-logo">
-                <i class="fa-solid fa-shield-halved"></i>
-                <span>Admin PlayGames</span>
+            <div class="login-header">
+                <i class="fa-solid fa-gamepad logo-icon"></i>
+                <h2>Admin Portal</h2>
+                <p>Acesse o modo de edição do site.</p>
             </div>
-            <p class="login-subtitle">Acesso restrito. Faça login para continuar.</p>
             
             <form id="login-form">
                 <div class="input-group">
                     <label for="admin-email">Usuário</label>
                     <div class="input-wrapper">
-                        <i class="fa-solid fa-user"></i>
-                        <input type="text" id="admin-email" placeholder="playgames" required>
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="admin-email" placeholder="Ex: playgames" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="input-group">
-                    <label for="admin-password">Senha</label>
+                    <label for="admin-password">Senha de Segurança</label>
                     <div class="input-wrapper">
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-key"></i>
                         <input type="password" id="admin-password" placeholder="••••••••" required>
                     </div>
                 </div>
                 <button type="submit" class="btn-login" id="btn-login">
-                    Entrar no Painel <i class="fa-solid fa-arrow-right"></i>
+                    Autenticar <i class="fa-solid fa-arrow-right-to-bracket"></i>
                 </button>
                 <div id="login-error" class="error-msg"></div>
             </form>
-        </div>
-    </div>
-
-    <!-- Painel de Controle (Dashboard) -->
-    <div id="dashboard-section" class="admin-section">
-        <nav class="admin-nav">
-            <div class="brand-logo">
-                <i class="fa-solid fa-gamepad"></i>
-                <span>PlayGames <span class="badge">Admin</span></span>
+            
+            <div class="login-footer">
+                <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Voltar para a Loja</a>
             </div>
-            <div class="nav-actions">
-                <span id="admin-user-display" class="admin-user"></span>
-                <button id="btn-logout" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</button>
-            </div>
-        </nav>
-
-        <main class="admin-main">
-            <header class="dashboard-header">
-                <div>
-                    <h1>Gerenciador de Catálogo</h1>
-                    <p>Adicione, edite ou remova jogos da loja em tempo real.</p>
-                </div>
-                <button class="btn-add-game" onclick="openGameModal()">
-                    <i class="fa-solid fa-plus"></i> Novo Jogo
-                </button>
-            </header>
-
-            <div class="games-table-container">
-                <table class="games-table">
-                    <thead>
-                        <tr>
-                            <th>Capa</th>
-                            <th>Título</th>
-                            <th>Plataforma</th>
-                            <th>Preço</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="games-table-body">
-                        <!-- Linhas geradas via JS -->
-                        <tr><td colspan="5" style="text-align:center; padding: 40px;">Carregando jogos do banco de dados...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
-
-    <!-- Modal Adicionar/Editar Jogo -->
-    <div id="game-modal" class="modal-overlay">
-        <div class="modal-content admin-modal">
-            <div class="modal-header">
-                <h2 id="modal-title">Adicionar Novo Jogo</h2>
-                <button class="close-btn" onclick="closeGameModal()"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <form id="game-form">
-                <input type="hidden" id="game-id">
-                
-                <div class="form-grid">
-                    <div class="input-group full-width">
-                        <label for="game-title">Título do Jogo</label>
-                        <input type="text" id="game-title" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="game-platform">Plataforma Principal</label>
-                        <select id="game-platform" required>
-                            <option value="PS5">PlayStation 5</option>
-                            <option value="PS4">PlayStation 4</option>
-                            <option value="Xbox Series X|S">Xbox Series X|S</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="game-price">Preço</label>
-                        <input type="text" id="game-price" placeholder="R$ 349,90" required>
-                    </div>
-
-                    <div class="input-group full-width">
-                        <label for="game-image">URL da Capa (Imagem)</label>
-                        <input type="url" id="game-image" placeholder="https://..." required>
-                    </div>
-
-                    <div class="input-group full-width">
-                        <label for="game-trailer">URL do Trailer (Opcional, YouTube)</label>
-                        <input type="url" id="game-trailer" placeholder="https://www.youtube.com/embed/...">
-                    </div>
-                </div>
-
-                <div class="modal-actions">
-                    <button type="button" class="btn-cancel" onclick="closeGameModal()">Cancelar</button>
-                    <button type="submit" class="btn-save" id="btn-save-game">Salvar Jogo</button>
-                </div>
-            </form>
         </div>
     </div>
 
