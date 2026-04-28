@@ -118,8 +118,16 @@ const xboxHeroSlides = [
 
 // Funções de Renderização
 function createGameCard(game) {
+    const adminActions = window.isAdmin ? `
+        <div class="admin-card-actions" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 5px;">
+            <button onclick="event.preventDefault(); openAdminModal('${game.id}', '${game.platform}')" style="background: var(--ps-blue); color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer;"><i class="fa-solid fa-pen"></i></button>
+            <button onclick="event.preventDefault(); deleteGame('${game.id}')" style="background: #ff4d4d; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer;"><i class="fa-solid fa-trash"></i></button>
+        </div>
+    ` : '';
+
     return `
         <a href="game-details.html?id=${game.id}" class="game-card">
+            ${adminActions}
             <div class="card-image-wrapper">
                 <img src="${game.image}" alt="${game.title}" class="card-image">
                 <div class="card-overlay">
@@ -145,6 +153,19 @@ function renderGames() {
     if (gridPs5) gridPs5.innerHTML = gamesData.ps5.map(createGameCard).join('');
     if (gridPs4) gridPs4.innerHTML = gamesData.ps4.map(createGameCard).join('');
     if (gridXbox) gridXbox.innerHTML = gamesData.xbox.map(createGameCard).join('');
+    
+    // Add '+' button for admins next to category titles
+    if (window.isAdmin) {
+        document.querySelectorAll('.category-title').forEach(title => {
+            if (!title.querySelector('.btn-add-inline')) {
+                let platform = 'PS5';
+                if (title.textContent.includes('PS4')) platform = 'PS4';
+                if (title.textContent.includes('Xbox')) platform = 'Xbox Series X|S';
+                
+                title.innerHTML += ` <button class="btn-add-inline" onclick="openAdminModal(null, '${platform}')" style="background: #1ed760; color: #000; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; font-size: 1.2rem; vertical-align: middle; margin-left: 10px; box-shadow: 0 0 10px rgba(30,215,96,0.5);"><i class="fa-solid fa-plus"></i></button>`;
+            }
+        });
+    }
 }
 
 function initHeroSlider() {
@@ -617,18 +638,25 @@ function initSearchBar() {
     }
 }
 
+window.isAdmin = false;
+
 // --- Fetch Dinâmico do Banco de Dados ---
 async function fetchGamesFromDB() {
     if (!supabase) return;
+    
+    // Check se está logado
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (sessionData && sessionData.session) {
+        window.isAdmin = true;
+        injectAdminModal();
+    }
+
     try {
-        const { data, error } = await supabase.from('games').select('*');
+        const { data, error } = await supabase.from('games').select('*').order('created_at', { ascending: true });
         if (!error && data && data.length > 0) {
-            // Limpa o fallback e popula com dados reais do banco
             gamesData = { ps5: [], ps4: [], xbox: [] };
             data.forEach(game => {
-                // Ensure IDs match the expected format for gameDetails
-                game.id = game.id; // DB UUID
-                
+                game.id = game.id; 
                 if (game.platform.includes('PS5')) {
                     gamesData.ps5.push(game);
                 } else if (game.platform.includes('PS4')) {
@@ -637,9 +665,6 @@ async function fetchGamesFromDB() {
                     gamesData.xbox.push(game);
                 }
             });
-            console.log("Jogos carregados do Banco de Dados!");
-        } else {
-            console.log("Banco vazio ou erro. Usando dados locais (fallback).");
         }
     } catch (e) {
         console.error("Erro ao buscar no Supabase:", e);
@@ -794,5 +819,130 @@ window.closeModal = function() {
         setTimeout(() => {
             document.getElementById('modal-body').innerHTML = '';
         }, 300);
+    }
+};
+
+// ==========================================
+// ADMIN IN-PLACE LOGIC
+// ==========================================
+window.injectAdminModal = function() {
+    if (document.getElementById('in-place-admin-modal')) return;
+
+    const modalHTML = `
+    <div id="in-place-admin-modal" class="modal-overlay" style="z-index: 10000;">
+        <div class="modal-content admin-modal" style="background: rgba(20,20,25,0.95); backdrop-filter: blur(20px); padding: 30px; border-radius: 12px; max-width: 500px; width: 90%; color: white; border: 1px solid rgba(255,255,255,0.1);">
+            <div class="modal-header" style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+                <h2 id="in-place-modal-title" style="margin: 0; font-size: 1.5rem; text-shadow: 0 0 10px rgba(255,255,255,0.3);">Adicionar Novo Jogo</h2>
+                <button onclick="document.getElementById('in-place-admin-modal').classList.remove('active')" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 1.2rem;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="in-place-game-form">
+                <input type="hidden" id="in-place-game-id">
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display:block; margin-bottom: 5px; color: #aaa;">Título</label>
+                    <input type="text" id="in-place-game-title" required style="width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 6px;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display:block; margin-bottom: 5px; color: #aaa;">Plataforma</label>
+                    <select id="in-place-game-platform" required style="width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 6px;">
+                        <option value="PS5">PlayStation 5</option>
+                        <option value="PS4">PlayStation 4</option>
+                        <option value="Xbox Series X|S">Xbox Series X|S</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display:block; margin-bottom: 5px; color: #aaa;">Preço</label>
+                    <input type="text" id="in-place-game-price" placeholder="R$ 199,90" required style="width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 6px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display:block; margin-bottom: 5px; color: #aaa;">URL da Imagem</label>
+                    <input type="url" id="in-place-game-image" required style="width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 6px;">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px;">
+                    <button type="button" onclick="document.getElementById('in-place-admin-modal').classList.remove('active')" style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 6px; cursor: pointer;">Cancelar</button>
+                    <button type="submit" id="in-place-btn-save" style="background: var(--ps-blue-light); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold;">Salvar Jogo</button>
+                </div>
+            </form>
+        </div>
+    </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    document.getElementById('in-place-game-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const btn = document.getElementById('in-place-btn-save');
+        btn.innerHTML = 'Salvando...';
+        btn.disabled = true;
+
+        const id = document.getElementById('in-place-game-id').value;
+        const data = {
+            title: document.getElementById('in-place-game-title').value,
+            platform: document.getElementById('in-place-game-platform').value,
+            price: document.getElementById('in-place-game-price').value,
+            image: document.getElementById('in-place-game-image').value,
+            game_id: 'db-' + Date.now()
+        };
+
+        let res;
+        if (id) {
+            res = await supabase.from('games').update(data).eq('id', id);
+        } else {
+            res = await supabase.from('games').insert([data]);
+        }
+
+        if (res.error) {
+            alert('Erro ao salvar: ' + res.error.message);
+            btn.innerHTML = 'Salvar Jogo';
+            btn.disabled = false;
+        } else {
+            document.getElementById('in-place-admin-modal').classList.remove('active');
+            btn.innerHTML = 'Salvar Jogo';
+            btn.disabled = false;
+            // Recarregar os dados
+            await fetchGamesFromDB();
+            renderGames();
+        }
+    });
+};
+
+window.openAdminModal = function(gameId = null, prefillPlatform = 'PS5') {
+    const modal = document.getElementById('in-place-admin-modal');
+    if (!modal) return;
+
+    if (gameId) {
+        document.getElementById('in-place-modal-title').textContent = "Editar Jogo";
+        // Find game in gamesData
+        let game = [...gamesData.ps5, ...gamesData.ps4, ...gamesData.xbox].find(g => g.id === gameId);
+        if (game) {
+            document.getElementById('in-place-game-id').value = game.id;
+            document.getElementById('in-place-game-title').value = game.title;
+            document.getElementById('in-place-game-platform').value = game.platform;
+            document.getElementById('in-place-game-price').value = game.price;
+            document.getElementById('in-place-game-image').value = game.image;
+        }
+    } else {
+        document.getElementById('in-place-modal-title').textContent = "Adicionar Jogo";
+        document.getElementById('in-place-game-form').reset();
+        document.getElementById('in-place-game-id').value = '';
+        document.getElementById('in-place-game-platform').value = prefillPlatform;
+    }
+    
+    modal.classList.add('active');
+};
+
+window.deleteGame = async function(id) {
+    if (confirm("Tem certeza que deseja apagar este jogo?")) {
+        const { error } = await supabase.from('games').delete().eq('id', id);
+        if (error) {
+            alert('Erro ao deletar: ' + error.message);
+        } else {
+            await fetchGamesFromDB();
+            renderGames();
+        }
     }
 };

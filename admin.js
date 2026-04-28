@@ -24,15 +24,13 @@ const errorMsg = document.getElementById('login-error');
 
 // --- Verificação de Sessão ---
 async function checkSession() {
-    if (!supabase) return; // Se não configurou, não faz nada
+    if (!supabase) return; 
     
     const { data, error } = await supabase.auth.getSession();
     
     if (data && data.session) {
-        // Usuário logado
-        showDashboard();
-        document.getElementById('admin-user-display').textContent = data.session.user.email;
-        loadGames();
+        // Usuário logado -> Redireciona para o site principal!
+        window.location.href = 'playstation.html';
     } else {
         // Não logado
         showLogin();
