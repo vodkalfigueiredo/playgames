@@ -35,6 +35,11 @@ if (loginForm) {
         let email = document.getElementById('admin-email').value.trim();
         const password = document.getElementById('admin-password').value;
         const btn = document.getElementById('btn-login');
+
+        if (!email || !password) {
+            alert("Atenção: Você precisa digitar o seu Usuário e a sua Senha! As caixas estão vazias.");
+            return;
+        }
         
         if (!email.includes('@')) {
             email = email + '@playgames.com';
