@@ -1,8 +1,8 @@
 // ==========================================
 // SUPABASE INITIALIZATION
 // ==========================================
-const SUPABASE_URL = 'https://pschdfopmkahuiokufzx.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_dZux-UcR_X3vyVsBbwCgCg_2GFMkKsH';
+const SUPABASE_URL = 'https://slqtismrpgoichwaaeiw.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_hmFi_wFeAy5hHZZbLqEtZw_WZ8gHRpE';
 
 let supabase = null;
 try {
