@@ -419,14 +419,47 @@ function initSearchBar() {
     if (searchClear) searchClear.addEventListener('click', () => { searchInput.value = ''; searchInput.dispatchEvent(new Event('input')); searchInput.focus(); });
 }
 
-// Inicializar
-document.addEventListener('DOMContentLoaded', () => {
-    renderGames();
-    initHeroSlider();
-    initGameDetails();
-    initSearchBar();
-    initPortal();
-    initCustomCursor();
+// Inicializar com segurança total
+function safeInit() {
+    // 1. Prioridade máxima: Portal/Intro (para não travar a tela)
+    try { 
+        initPortal(); 
+    } catch(e) { 
+        console.error("Erro initPortal:", e);
+        // Fallback imediato se o portal falhar
+        const intro = document.getElementById('intro-screen');
+        if (intro) intro.style.display = 'none';
+        const selector = document.getElementById('platform-selector');
+        if (selector) selector.classList.remove('hidden');
+    }
+    
+    // 2. Outros componentes (podem falhar individualmente sem travar o resto)
+    try { renderGames(); } catch(e) { console.error("Erro renderGames:", e); }
+    try { initHeroSlider(); } catch(e) { console.error("Erro initHeroSlider:", e); }
+    try { initGameDetails(); } catch(e) { console.error("Erro initGameDetails:", e); }
+    try { initSearchBar(); } catch(e) { console.error("Erro initSearchBar:", e); }
+    try { initCustomCursor(); } catch(e) { console.error("Erro initCustomCursor:", e); }
+}
+
+document.addEventListener('DOMContentLoaded', safeInit);
+
+// Fallback de emergência caso o DOMContentLoaded demore ou falhe
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const intro = document.getElementById('intro-screen');
+        if (intro && window.getComputedStyle(intro).display !== 'none') {
+            console.warn("Segurança: Removendo tela de intro via fallback.");
+            intro.style.display = 'none';
+            const selector = document.getElementById('platform-selector');
+            if (selector) {
+                selector.classList.remove('hidden');
+                selector.style.display = 'flex';
+                // Revela as metades caso não tenham sido reveladas
+                document.getElementById('ps-half')?.classList.add('revealed');
+                document.getElementById('xbox-half')?.classList.add('revealed');
+            }
+        }
+    }, 2000); // Se em 2 segundos após o 'load' total ainda estiver lá, remove.
 });
 
 function initGameDetails() {
