@@ -18,6 +18,7 @@ if (window.supabase) {
 // ==========================================
 // DADOS DOS JOGOS (Catálogo Completo)
 // ==========================================
+let gamesData = {
     ps5: [
         { id: 'ps5-1', title: "God of War Ragnarök", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/679C9NfX98sTpxWIn6K8566S.png", platform: "PS5" },
         { id: 'ps5-2', title: "Marvel's Spider-Man 2", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5" },
