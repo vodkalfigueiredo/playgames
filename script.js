@@ -1,19 +1,3 @@
-// ==========================================
-// SUPABASE INITIALIZATION
-// ==========================================
-const SUPABASE_URL = 'https://slqtismrpgoichwaaeiw.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_hmFi_wFeAy5hHZZbLqEtZw_WZ8gHRpE';
-
-let supabase = null;
-if (window.supabase) {
-    try {
-        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    } catch (e) {
-        console.warn("Erro ao inicializar Supabase:", e);
-    }
-} else {
-    console.warn("Supabase SDK não encontrado.");
-}
 
 // ==========================================
 // DADOS DOS JOGOS (Catálogo Completo)
