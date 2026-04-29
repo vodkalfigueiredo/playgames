@@ -354,37 +354,49 @@ function initPortal() {
     const introScreen = document.getElementById('intro-screen'), platformSelector = document.getElementById('platform-selector');
     if (!introScreen || !platformSelector) return;
     const isTouch = isTouchDevice();
-    const introParticles = createParticleSystem(document.getElementById('intro-canvas'), {
-        count: isTouch ? 25 : 60, speed: 0.4, minR: 0.5, maxR: 2.5, maxAlpha: 0.5, glow: !isTouch,
-        colors: ['#0070d1', '#00bfff', '#159b15', '#52d45c', '#ffffff', '#a0c4ff']
-    });
-    introParticles.start();
+    // Partículas (opcional, não trava se falhar)
+    try {
+        const introParticles = createParticleSystem(document.getElementById('intro-canvas'), {
+            count: isTouch ? 25 : 60, speed: 0.4, minR: 0.5, maxR: 2.5, maxAlpha: 0.5, glow: !isTouch,
+            colors: ['#0070d1', '#00bfff', '#159b15', '#52d45c', '#ffffff', '#a0c4ff']
+        });
+        introParticles.start();
+        window.introParticlesRef = introParticles;
+    } catch(e) { console.warn("Erro ao iniciar partículas da intro"); }
 
-    // Reduzi de 2800ms para 1500ms para carregar mais rápido
-    const introDuration = 1500; 
+    // Reduzi para 1200ms para ser quase imediato após o carregamento
+    const introDuration = 1200; 
 
     setTimeout(() => {
-        introScreen.classList.add('fade-out');
+        // Usar estilo direto em vez de classe CSS para evitar problemas de cache
+        introScreen.style.transition = 'opacity 0.8s ease, visibility 0.8s';
+        introScreen.style.opacity = '0';
+        introScreen.style.visibility = 'hidden';
+
         setTimeout(() => {
             introScreen.style.display = 'none'; 
-            introParticles.stop();
-            platformSelector.classList.remove('hidden');
+            if (window.introParticlesRef) window.introParticlesRef.stop();
             
-            // Força a exibição caso a classe 'hidden' tenha display:none !important
+            platformSelector.classList.remove('hidden');
             platformSelector.style.display = 'flex'; 
 
             setTimeout(() => {
-                document.getElementById('ps-half')?.classList.add('revealed');
+                const psHalf = document.getElementById('ps-half');
+                const xboxHalf = document.getElementById('xbox-half');
+                if (psHalf) psHalf.classList.add('revealed');
                 setTimeout(() => { 
-                    document.getElementById('xbox-half')?.classList.add('revealed'); 
+                    if (xboxHalf) xboxHalf.classList.add('revealed'); 
                 }, 150);
             }, 80);
 
+            // Partículas das metades (opcional)
             setTimeout(() => {
-                const psCanvas = document.getElementById('ps-canvas');
-                const xboxCanvas = document.getElementById('xbox-canvas');
-                if (psCanvas) createParticleSystem(psCanvas, { count: isTouch ? 28 : 55, speed: 0.5, minR: 0.5, maxR: 2.5, maxAlpha: 0.6, glow: !isTouch, colors: ['#0070d1', '#00aaff', '#00c6ff', '#ffffff', '#cce8ff'] }).start();
-                if (xboxCanvas) createParticleSystem(xboxCanvas, { count: isTouch ? 28 : 55, speed: 0.5, minR: 0.5, maxR: 2.5, maxAlpha: 0.6, glow: !isTouch, colors: ['#159b15', '#52d45c', '#7fff7f', '#ffffff', '#c8ffd4'] }).start();
+                try {
+                    const psCanvas = document.getElementById('ps-canvas');
+                    const xboxCanvas = document.getElementById('xbox-canvas');
+                    if (psCanvas) createParticleSystem(psCanvas, { count: isTouch ? 28 : 55, speed: 0.5, minR: 0.5, maxR: 2.5, maxAlpha: 0.6, glow: !isTouch, colors: ['#0070d1', '#00aaff', '#00c6ff', '#ffffff', '#cce8ff'] }).start();
+                    if (xboxCanvas) createParticleSystem(xboxCanvas, { count: isTouch ? 28 : 55, speed: 0.5, minR: 0.5, maxR: 2.5, maxAlpha: 0.6, glow: !isTouch, colors: ['#159b15', '#52d45c', '#7fff7f', '#ffffff', '#c8ffd4'] }).start();
+                } catch(e) {}
             }, 600);
         }, 800);
     }, introDuration);

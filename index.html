@@ -113,5 +113,32 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
+    
+    <!-- Fail-safe imediato diretamente no HTML -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const intro = document.getElementById('intro-screen');
+            const selector = document.getElementById('platform-selector');
+            
+            // Forçar a saída após 3 segundos NO MÁXIMO
+            setTimeout(function() {
+                if (intro && intro.style.display !== 'none') {
+                    console.log("Removendo intro pelo fail-safe do HTML");
+                    intro.style.transition = 'opacity 0.8s ease';
+                    intro.style.opacity = '0';
+                    setTimeout(function() {
+                        intro.style.display = 'none';
+                        if (selector) {
+                            selector.classList.remove('hidden');
+                            selector.style.display = 'flex';
+                            // Ativar as metades
+                            document.getElementById('ps-half').classList.add('revealed');
+                            document.getElementById('xbox-half').classList.add('revealed');
+                        }
+                    }, 800);
+                }
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
