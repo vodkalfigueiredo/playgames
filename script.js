@@ -18,7 +18,6 @@ if (window.supabase) {
 // ==========================================
 // DADOS DOS JOGOS (Catálogo Completo)
 // ==========================================
-let gamesData = {
     ps5: [
         { id: 'ps5-1', title: "God of War Ragnarök", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/679C9NfX98sTpxWIn6K8566S.png", platform: "PS5" },
         { id: 'ps5-2', title: "Marvel's Spider-Man 2", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5" },
@@ -27,7 +26,11 @@ let gamesData = {
         { id: 'ps5-5', title: "Elden Ring", price: "R$ 299,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/7697D6fX98sTpxWIn6K8566S.png", platform: "PS5" },
         { id: 'ps5-6', title: "Demon's Souls", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202009/2517/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5" },
         { id: 'ps5-7', title: "Gran Turismo 7", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202109/1321/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5" },
-        { id: 'ps5-8', title: "Resident Evil 4", price: "R$ 249,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202210/0712/679C9NfX98sTpxWIn6K8566S.png", platform: "PS5" }
+        { id: 'ps5-8', title: "Resident Evil 4", price: "R$ 249,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202210/0712/679C9NfX98sTpxWIn6K8566S.png", platform: "PS5" },
+        { id: 'ps5-9', title: "Final Fantasy VII Rebirth", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202309/0714/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5" },
+        { id: 'ps5-10', title: "Baldur's Gate 3", price: "R$ 299,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202302/2321/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5" },
+        { id: 'ps5-11', title: "Tekken 8", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202308/1015/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5" },
+        { id: 'ps5-12', title: "Alan Wake 2", price: "R$ 270,00", image: "https://image.api.playstation.com/vulcan/ap/rnd/202305/2418/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5" }
     ],
     ps4: [
         { id: 'ps4-1', title: "Bloodborne", price: "R$ 99,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4" },
@@ -37,7 +40,11 @@ let gamesData = {
         { id: 'ps4-5', title: "Horizon Zero Dawn", price: "R$ 99,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4" },
         { id: 'ps4-6', title: "Red Dead Redemption 2", price: "R$ 249,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/library_600x900.jpg", platform: "PS4" },
         { id: 'ps4-7', title: "Marvel's Spider-Man", price: "R$ 149,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4" },
-        { id: 'ps4-8', title: "Uncharted 4: A Thief's End", price: "R$ 99,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4" }
+        { id: 'ps4-8', title: "Uncharted 4: A Thief's End", price: "R$ 99,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4" },
+        { id: 'ps4-9', title: "Persona 5 Royal", price: "R$ 249,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4" },
+        { id: 'ps4-10', title: "The Witcher 3: Wild Hunt", price: "R$ 149,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/292030/library_600x900.jpg", platform: "PS4" },
+        { id: 'ps4-11', title: "Sekiro: Shadows Die Twice", price: "R$ 199,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/814380/library_600x900.jpg", platform: "PS4" },
+        { id: 'ps4-12', title: "Dark Souls III", price: "R$ 149,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/374320/library_600x900.jpg", platform: "PS4" }
     ],
     xbox: [
         { id: 'xb-1', title: "Halo Infinite", price: "R$ 299,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1240440/library_600x900.jpg", platform: "Xbox Series X|S" },
@@ -47,7 +54,11 @@ let gamesData = {
         { id: 'xb-5', title: "Gears 5", price: "R$ 199,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1097840/library_600x900.jpg", platform: "Xbox One" },
         { id: 'xb-6', title: "Psychonauts 2", price: "R$ 249,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/607080/library_600x900.jpg", platform: "Xbox Series X|S" },
         { id: 'xb-7', title: "Hi-Fi RUSH", price: "R$ 149,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817230/library_600x900.jpg", platform: "Xbox Series X|S" },
-        { id: 'xb-8', title: "Microsoft Flight Simulator", price: "R$ 299,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1250410/library_600x900.jpg", platform: "Xbox Series X|S" }
+        { id: 'xb-8', title: "Microsoft Flight Simulator", price: "R$ 299,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1250410/library_600x900.jpg", platform: "Xbox Series X|S" },
+        { id: 'xb-9', title: "Gears Hivebusters", price: "R$ 99,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1097840/library_600x900.jpg", platform: "Xbox Series X|S" },
+        { id: 'xb-10', title: "Ori and the Will of the Wisps", price: "R$ 129,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1057090/library_600x900.jpg", platform: "Xbox One" },
+        { id: 'xb-11', title: "Grounded", price: "R$ 149,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/962130/library_600x900.jpg", platform: "Xbox Series X|S" },
+        { id: 'xb-12', title: "Senua's Saga: Hellblade II", price: "R$ 229,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1271310/library_600x900.jpg", platform: "Xbox Series X|S" }
     ]
 };
 
@@ -433,20 +444,24 @@ function initSearchBar() {
 
 // Inicializar com segurança total
 function safeInit() {
-    // 1. Prioridade máxima: Portal/Intro (para não travar a tela)
+    console.log("Iniciando SafeInit...");
+    // 1. Prioridade máxima: Portal/Intro
     try { 
         initPortal(); 
     } catch(e) { 
         console.error("Erro initPortal:", e);
-        // Fallback imediato se o portal falhar
         const intro = document.getElementById('intro-screen');
         if (intro) intro.style.display = 'none';
         const selector = document.getElementById('platform-selector');
         if (selector) selector.classList.remove('hidden');
     }
     
-    // 2. Outros componentes (podem falhar individualmente sem travar o resto)
-    try { renderGames(); } catch(e) { console.error("Erro renderGames:", e); }
+    // 2. Renderização de Jogos (Crucial para as páginas internas)
+    try { 
+        console.log("Renderizando jogos...");
+        renderGames(); 
+    } catch(e) { console.error("Erro renderGames:", e); }
+
     try { initHeroSlider(); } catch(e) { console.error("Erro initHeroSlider:", e); }
     try { initGameDetails(); } catch(e) { console.error("Erro initGameDetails:", e); }
     try { initSearchBar(); } catch(e) { console.error("Erro initSearchBar:", e); }
