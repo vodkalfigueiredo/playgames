@@ -46,7 +46,6 @@ let gamesData = {
         { id: 'xb-12', title: "Ori", price: "R$ 129,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1057090/library_600x900.jpg", platform: "Xbox One", videoUrl: "knXpT9K_E_E" }
     ]
 };
-};
 
 // ==========================================
 // SLIDES DE OFERTA (Banner Principal)
