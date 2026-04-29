@@ -5,10 +5,14 @@ const SUPABASE_URL = 'https://slqtismrpgoichwaaeiw.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_hmFi_wFeAy5hHZZbLqEtZw_WZ8gHRpE';
 
 let supabase = null;
-try {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-} catch (e) {
-    console.warn("Supabase não carregado no frontend.");
+if (window.supabase) {
+    try {
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } catch (e) {
+        console.warn("Erro ao inicializar Supabase:", e);
+    }
+} else {
+    console.warn("Supabase SDK não encontrado.");
 }
 
 // ==========================================
@@ -227,7 +231,14 @@ function initHeroSlider() {
 // PORTAL HOME — Cinematic Animation Engine
 // =============================================
 function createParticleSystem(canvas, options) {
-    const ctx = canvas.getContext('2d');
+    if (!canvas) return { start: () => {}, stop: () => {} };
+    let ctx;
+    try {
+        ctx = canvas.getContext('2d');
+    } catch (e) {
+        return { start: () => {}, stop: () => {} };
+    }
+    if (!ctx) return { start: () => {}, stop: () => {} };
     let particles = [];
     let animId;
     let W, H;
@@ -349,22 +360,34 @@ function initPortal() {
     });
     introParticles.start();
 
+    // Reduzi de 2800ms para 1500ms para carregar mais rápido
+    const introDuration = 1500; 
+
     setTimeout(() => {
         introScreen.classList.add('fade-out');
         setTimeout(() => {
-            introScreen.style.display = 'none'; introParticles.stop();
+            introScreen.style.display = 'none'; 
+            introParticles.stop();
             platformSelector.classList.remove('hidden');
+            
+            // Força a exibição caso a classe 'hidden' tenha display:none !important
+            platformSelector.style.display = 'flex'; 
+
             setTimeout(() => {
                 document.getElementById('ps-half')?.classList.add('revealed');
-                setTimeout(() => { document.getElementById('xbox-half')?.classList.add('revealed'); }, 150);
+                setTimeout(() => { 
+                    document.getElementById('xbox-half')?.classList.add('revealed'); 
+                }, 150);
             }, 80);
+
             setTimeout(() => {
-                const psCanvas = document.getElementById('ps-canvas'), xboxCanvas = document.getElementById('xbox-canvas');
+                const psCanvas = document.getElementById('ps-canvas');
+                const xboxCanvas = document.getElementById('xbox-canvas');
                 if (psCanvas) createParticleSystem(psCanvas, { count: isTouch ? 28 : 55, speed: 0.5, minR: 0.5, maxR: 2.5, maxAlpha: 0.6, glow: !isTouch, colors: ['#0070d1', '#00aaff', '#00c6ff', '#ffffff', '#cce8ff'] }).start();
                 if (xboxCanvas) createParticleSystem(xboxCanvas, { count: isTouch ? 28 : 55, speed: 0.5, minR: 0.5, maxR: 2.5, maxAlpha: 0.6, glow: !isTouch, colors: ['#159b15', '#52d45c', '#7fff7f', '#ffffff', '#c8ffd4'] }).start();
             }, 600);
         }, 800);
-    }, 2800);
+    }, introDuration);
 
     const psBtn = document.getElementById('ps-enter-btn'), xboxBtn = document.getElementById('xbox-enter-btn');
     if (!isTouch) {
