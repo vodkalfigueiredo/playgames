@@ -460,6 +460,9 @@ function safeInit() {
     try { 
         console.log("Renderizando jogos...");
         renderGames(); 
+        // Forçar renderização secundária após pequeno delay (garante que o DOM está pronto)
+        setTimeout(renderGames, 100);
+        setTimeout(renderGames, 500);
     } catch(e) { console.error("Erro renderGames:", e); }
 
     try { initHeroSlider(); } catch(e) { console.error("Erro initHeroSlider:", e); }
