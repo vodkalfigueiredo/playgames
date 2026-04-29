@@ -644,19 +644,23 @@ window.isAdmin = false;
 async function fetchGamesFromDB() {
     if (!supabase) return;
     
-    // Check se está logado
-    const { data: sessionData } = await supabase.auth.getSession();
-    if (sessionData && sessionData.session) {
-        window.isAdmin = true;
-        injectAdminModal();
-    }
-
     try {
+        // Check se está logado
+        const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+        
+        if (sessionError) {
+            console.warn("Erro ao verificar sessão Supabase:", sessionError);
+        } else if (sessionData && sessionData.session) {
+            window.isAdmin = true;
+            injectAdminModal();
+        }
+
         const { data, error } = await supabase.from('games').select('*').order('created_at', { ascending: true });
-        if (!error && data && data.length > 0) {
+        if (error) {
+            console.warn("Erro ao buscar jogos do Supabase:", error);
+        } else if (data && data.length > 0) {
             gamesData = { ps5: [], ps4: [], xbox: [] };
             data.forEach(game => {
-                game.id = game.id; 
                 if (game.platform.includes('PS5')) {
                     gamesData.ps5.push(game);
                 } else if (game.platform.includes('PS4')) {
@@ -667,7 +671,8 @@ async function fetchGamesFromDB() {
             });
         }
     } catch (e) {
-        console.error("Erro ao buscar no Supabase:", e);
+        console.error("Erro crítico ao comunicar com o Supabase:", e);
+        // O código continua normalmente usando os dados locais (gamesData) como fallback
     }
 }
 
