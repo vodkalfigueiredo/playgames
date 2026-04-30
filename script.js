@@ -4,28 +4,28 @@
 // ==========================================
 let gamesData = {
     ps5: [
-        { id: 'ps5-1', title: "God of War Ragnarök", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/679C9NfX98sTpxWIn6K8566S.png", platform: "PS5", videoUrl: "hfJ4Km46A-0" },
-        { id: 'ps5-2', title: "Marvel's Spider-Man 2", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5", videoUrl: "9fX2T_6W4Is" },
-        { id: 'ps5-3', title: "Horizon Forbidden West", price: "R$ 299,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202107/3100/1pIny0ZfvxvC9P6S3vA278u3.png", platform: "PS5", videoUrl: "LqXp6z6yv3k" },
-        { id: 'ps5-4', title: "Ratchet & Clank", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202102/1117/3990S57s018oJ5vM8fS1q6S.png", platform: "PS5", videoUrl: "ai3o0Xtr6V8" },
+        { id: 'ps5-1', title: "God of War Ragnarök", price: "R$ 349,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/library_600x900.jpg", platform: "PS5", videoUrl: "hfJ4Km46A-0" },
+        { id: 'ps5-2', title: "Marvel's Spider-Man 2", price: "R$ 349,90", image: "https://cdn2.steamgriddb.com/grid/adda5a42ecb35e33fb04e4007f3be44a.png", platform: "PS5", videoUrl: "9fX2T_6W4Is" },
+        { id: 'ps5-3', title: "Horizon Forbidden West", price: "R$ 299,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2420110/library_600x900.jpg", platform: "PS5", videoUrl: "LqXp6z6yv3k" },
+        { id: 'ps5-4', title: "Ratchet & Clank", price: "R$ 349,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1895880/library_600x900.jpg", platform: "PS5", videoUrl: "ai3o0Xtr6V8" },
         { id: 'ps5-5', title: "Elden Ring", price: "R$ 299,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/library_600x900.jpg", platform: "PS5", videoUrl: "E3Huyq7Z_3Y" },
-        { id: 'ps5-6', title: "Demon's Souls", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202009/2517/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5", videoUrl: "2TMs2E6cms4" },
-        { id: 'ps5-7', title: "Gran Turismo 7", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202109/1321/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5", videoUrl: "1ps2n1u6Y_g" },
+        { id: 'ps5-6', title: "Demon's Souls", price: "R$ 349,90", image: "https://cdn2.steamgriddb.com/grid/7f260734198733fb642f90df1d2b580a.jpg", platform: "PS5", videoUrl: "2TMs2E6cms4" },
+        { id: 'ps5-7', title: "Gran Turismo 7", price: "R$ 349,90", image: "https://cdn2.steamgriddb.com/grid/76c059e958407c8e2210f2abb45467a3.png", platform: "PS5", videoUrl: "1ps2n1u6Y_g" },
         { id: 'ps5-8', title: "Resident Evil 4", price: "R$ 249,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/library_600x900.jpg", platform: "PS5", videoUrl: "7R69zID5uMA" },
-        { id: 'ps5-9', title: "Final Fantasy VII Rebirth", price: "R$ 349,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202309/0714/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5", videoUrl: "m9TInM9n_y0" },
+        { id: 'ps5-9', title: "Final Fantasy VII Rebirth", price: "R$ 349,90", image: "https://cdn2.steamgriddb.com/grid/6c9cee5c24216db635d3b21c25b364d2.png", platform: "PS5", videoUrl: "m9TInM9n_y0" },
         { id: 'ps5-10', title: "Baldur's Gate 3", price: "R$ 299,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/library_600x900.jpg", platform: "PS5", videoUrl: "1TerO3uK7_U" },
         { id: 'ps5-11', title: "Tekken 8", price: "R$ 349,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/library_600x900.jpg", platform: "PS5", videoUrl: "vH_u_6Z26Z4" },
-        { id: 'ps5-12', title: "Alan Wake 2", price: "R$ 270,00", image: "https://image.api.playstation.com/vulcan/ap/rnd/202305/2418/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS5", videoUrl: "dlQ3Fe7Apx4" }
+        { id: 'ps5-12', title: "Alan Wake 2", price: "R$ 270,00", image: "https://cdn2.steamgriddb.com/grid/a7147fd59ab64d16e49e819733ad2187.png", platform: "PS5", videoUrl: "dlQ3Fe7Apx4" }
     ],
     ps4: [
-        { id: 'ps4-1', title: "Bloodborne", price: "R$ 99,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4", videoUrl: "G203e1HhixY" },
-        { id: 'ps4-2', title: "Ghost of Tsushima", price: "R$ 199,90", image: "https://image.api.playstation.com/vulcan/ap/rnd/202106/2321/6027b23547076a08418f43501306eb189047918a22a333d9.png", platform: "PS4", videoUrl: "m_Yf_79j71o" },
-        { id: 'ps4-3', title: "The Last of Us Part II", price: "R$ 199,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2618/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4", videoUrl: "II5UsqP2JAk" },
-        { id: 'ps4-4', title: "God of War (2018)", price: "R$ 99,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4", videoUrl: "K0u_k-6vRtg" },
-        { id: 'ps4-5', title: "Horizon Zero Dawn", price: "R$ 99,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4", videoUrl: "RRQDqurZJNk" },
+        { id: 'ps4-1', title: "Bloodborne", price: "R$ 99,90", image: "https://cdn2.steamgriddb.com/grid/12eac4fff4ce43481560396cab0ae0a4.png", platform: "PS4", videoUrl: "G203e1HhixY" },
+        { id: 'ps4-2', title: "Ghost of Tsushima", price: "R$ 199,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2215430/library_600x900.jpg", platform: "PS4", videoUrl: "m_Yf_79j71o" },
+        { id: 'ps4-3', title: "The Last of Us Part II", price: "R$ 199,90", image: "https://cdn2.steamgriddb.com/grid/a6d671b12c0442bae38f1fd6fafe3d6d.png", platform: "PS4", videoUrl: "II5UsqP2JAk" },
+        { id: 'ps4-4', title: "God of War (2018)", price: "R$ 99,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1593500/library_600x900.jpg", platform: "PS4", videoUrl: "K0u_k-6vRtg" },
+        { id: 'ps4-5', title: "Horizon Zero Dawn", price: "R$ 99,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1151640/library_600x900.jpg", platform: "PS4", videoUrl: "RRQDqurZJNk" },
         { id: 'ps4-6', title: "Red Dead Redemption 2", price: "R$ 249,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/library_600x900.jpg", platform: "PS4", videoUrl: "eaW0tYpxn0k" },
-        { id: 'ps4-7', title: "Marvel's Spider-Man", price: "R$ 149,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4", videoUrl: "q4GdJVvdxko" },
-        { id: 'ps4-8', title: "Uncharted 4", price: "R$ 99,90", image: "https://image.api.playstation.com/vulcan/img/rnd/202010/2614/679C9NfX98sTpxWIn6K8566S.png", platform: "PS4", videoUrl: "y1Re0P_LKyw" },
+        { id: 'ps4-7', title: "Marvel's Spider-Man", price: "R$ 149,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817070/library_600x900.jpg", platform: "PS4", videoUrl: "q4GdJVvdxko" },
+        { id: 'ps4-8', title: "Uncharted 4", price: "R$ 99,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1659420/library_600x900.jpg", platform: "PS4", videoUrl: "y1Re0P_LKyw" },
         { id: 'ps4-9', title: "The Witcher 3", price: "R$ 149,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/292030/library_600x900.jpg", platform: "PS4", videoUrl: "XHrskkBa9ls" },
         { id: 'ps4-10', title: "Sekiro", price: "R$ 199,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/814380/library_600x900.jpg", platform: "PS4", videoUrl: "rXMX4YJ7Lks" },
         { id: 'ps4-11', title: "Cyberpunk 2077", price: "R$ 249,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/library_600x900.jpg", platform: "PS4", videoUrl: "8X2kIfS6fb8" },
@@ -56,14 +56,14 @@ const psOfferSlides = [
         promoTitle: "OFERTA DA SEMANA",
         title: "God of War Ragnarök",
         desc: "O Fimbulwinter se aproxima. Kratos e Atreus devem viajar pelos Nove Reinos em busca de respostas.",
-        image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/679C9NfX98sTpxWIn6K8566S.png",
+        image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/library_600x900.jpg",
         originalPrice: "R$ 349,90",
         promoPrice: "R$ 174,95",
         discount: "-50%",
         platform: "PS5",
         platformClass: "ps5",
         icon: "fa-playstation",
-        videoUrl: "https://www.youtube.com/embed/hfJ4Km46A-0?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=hfJ4Km46A-0&disablekb=1&modestbranding=1",
+        videoUrl: "https://www.youtube.com/embed/x6oF3Jxu7X0?autoplay=1&mute=1&loop=1&playlist=x6oF3Jxu7X0&controls=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1",
         videoType: "youtube"
     },
     {
@@ -71,14 +71,14 @@ const psOfferSlides = [
         promoTitle: "PROMOÇÃO FLASH",
         title: "Marvel's Spider-Man 2",
         desc: "Os Spiders Peter Parker e Miles Morales retornam para uma nova aventura épica na Nova York da Marvel.",
-        image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/6027b23547076a08418f43501306eb189047918a22a333d9.png",
+        image: "https://cdn2.steamgriddb.com/grid/adda5a42ecb35e33fb04e4007f3be44a.png",
         originalPrice: "R$ 349,90",
         promoPrice: "R$ 244,93",
         discount: "-30%",
         platform: "PS5",
         platformClass: "ps5",
         icon: "fa-playstation",
-        videoUrl: "https://www.youtube.com/embed/9fX2T_6W4Is?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=9fX2T_6W4Is&disablekb=1&modestbranding=1",
+        videoUrl: "https://www.youtube.com/embed/bgqGdIoa52s?autoplay=1&mute=1&loop=1&playlist=bgqGdIoa52s&controls=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1",
         videoType: "youtube"
     },
     {
@@ -86,14 +86,14 @@ const psOfferSlides = [
         promoTitle: "NOVIDADE",
         title: "FF VII Rebirth",
         desc: "A jornada rumo ao desconhecido continua. Cloud e seus amigos deixam Midgar para trás.",
-        image: "https://image.api.playstation.com/vulcan/ap/rnd/202309/0714/6027b23547076a08418f43501306eb189047918a22a333d9.png",
+        image: "https://cdn2.steamgriddb.com/grid/6c9cee5c24216db635d3b21c25b364d2.png",
         originalPrice: "R$ 349,90",
         promoPrice: "R$ 299,90",
         discount: "-15%",
         platform: "PS5",
         platformClass: "ps5",
         icon: "fa-playstation",
-        videoUrl: "https://www.youtube.com/embed/m9TInM9n_y0?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=m9TInM9n_y0&disablekb=1&modestbranding=1",
+        videoUrl: "https://www.youtube.com/embed/KOhs9ZLImgE?autoplay=1&mute=1&loop=1&playlist=KOhs9ZLImgE&controls=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1",
         videoType: "youtube"
     }
 ];
@@ -196,7 +196,7 @@ function initHeroSlider() {
 
     slidesContainer.innerHTML = activeSlides.map((slide, index) => {
         const bgMedia = slide.videoType === 'youtube'
-            ? `<iframe class="slide-video-bg" src="${slide.videoUrl}&origin=http://localhost:8765" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+            ? `<iframe class="slide-video-bg" src="${slide.videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
             : `<video class="slide-video-bg" autoplay loop muted playsinline><source src="${slide.videoUrl}" type="video/mp4"></video>`;
         
         return `
@@ -547,7 +547,7 @@ function initGameDetails() {
                 <p class="details-desc">Experimente a emoção de ${foundGame.title}. Disponível para ${foundGame.platform}.</p>
                 <div class="details-price-box">
                     <div class="details-price">${foundGame.price}</div>
-                    <button class="buy-btn-huge" style="background: ${isPS ? 'linear-gradient(135deg, var(--ps-blue-light), #00bfff)' : 'linear-gradient(135deg, var(--xbox-green-light), #1ed760)'};">
+                    <button class="buy-btn-huge" onclick="buyGame('${foundGame.title.replace(/'/g, "\\'")}')" style="background: ${isPS ? 'linear-gradient(135deg, var(--ps-blue-light), #00bfff)' : 'linear-gradient(135deg, var(--xbox-green-light), #1ed760)'};">
                         <i class="fa-solid fa-cart-shopping"></i> Comprar Agora
                     </button>
                 </div>
@@ -574,3 +574,18 @@ window.closeModal = function() {
         setTimeout(() => { document.getElementById('modal-body').innerHTML = ''; }, 300);
     }
 };
+
+// ==========================================
+// FUNÇÃO DE COMPRA VIA WHATSAPP
+// ==========================================
+function buyGame(gameTitle) {
+    const phone = "5594991149412";
+    const message = encodeURIComponent(`Olá, Gostaria de comprar "${gameTitle}"`);
+    const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+    
+    // Pequeno efeito visual antes de redirecionar (opcional)
+    console.log(`Iniciando compra de: ${gameTitle}`);
+    
+    // Abre em nova aba
+    window.open(whatsappUrl, '_blank');
+}
