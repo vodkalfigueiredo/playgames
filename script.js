@@ -4,15 +4,15 @@
 // ==========================================
 let gamesData = {
     ps5: [
-        { id: 'ps5-1', title: "God of War Ragnarök", price: "R$ 349,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/library_600x900.jpg", platform: "PS5", videoUrl: "hfJ4Km46A-0" },
-        { id: 'ps5-2', title: "Marvel's Spider-Man 2", price: "R$ 349,90", image: "https://cdn2.steamgriddb.com/grid/adda5a42ecb35e33fb04e4007f3be44a.png", platform: "PS5", videoUrl: "9fX2T_6W4Is" },
+        { id: 'ps5-1', title: "God of War Ragnarök", price: "R$ 174,95", oldPrice: "R$ 349,90", promo: true, discount: "-50%", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/library_600x900.jpg", platform: "PS5", videoUrl: "x6oF3Jxu7X0" },
+        { id: 'ps5-2', title: "Marvel's Spider-Man 2", price: "R$ 244,93", oldPrice: "R$ 349,90", promo: true, discount: "-30%", image: "https://cdn2.steamgriddb.com/grid/adda5a42ecb35e33fb04e4007f3be44a.png", platform: "PS5", videoUrl: "bgqGdIoa52s" },
         { id: 'ps5-3', title: "Horizon Forbidden West", price: "R$ 299,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2420110/library_600x900.jpg", platform: "PS5", videoUrl: "LqXp6z6yv3k" },
         { id: 'ps5-4', title: "Ratchet & Clank", price: "R$ 349,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1895880/library_600x900.jpg", platform: "PS5", videoUrl: "ai3o0Xtr6V8" },
         { id: 'ps5-5', title: "Elden Ring", price: "R$ 299,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/library_600x900.jpg", platform: "PS5", videoUrl: "E3Huyq7Z_3Y" },
         { id: 'ps5-6', title: "Demon's Souls", price: "R$ 349,90", image: "https://cdn2.steamgriddb.com/grid/7f260734198733fb642f90df1d2b580a.jpg", platform: "PS5", videoUrl: "2TMs2E6cms4" },
         { id: 'ps5-7', title: "Gran Turismo 7", price: "R$ 349,90", image: "https://cdn2.steamgriddb.com/grid/76c059e958407c8e2210f2abb45467a3.png", platform: "PS5", videoUrl: "1ps2n1u6Y_g" },
         { id: 'ps5-8', title: "Resident Evil 4", price: "R$ 249,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/library_600x900.jpg", platform: "PS5", videoUrl: "7R69zID5uMA" },
-        { id: 'ps5-9', title: "Final Fantasy VII Rebirth", price: "R$ 349,90", image: "https://cdn2.steamgriddb.com/grid/6c9cee5c24216db635d3b21c25b364d2.png", platform: "PS5", videoUrl: "m9TInM9n_y0" },
+        { id: 'ps5-9', title: "Final Fantasy VII Rebirth", price: "R$ 299,90", oldPrice: "R$ 349,90", promo: true, discount: "-15%", image: "https://cdn2.steamgriddb.com/grid/6c9cee5c24216db635d3b21c25b364d2.png", platform: "PS5", videoUrl: "KOhs9ZLImgE" },
         { id: 'ps5-10', title: "Baldur's Gate 3", price: "R$ 299,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/library_600x900.jpg", platform: "PS5", videoUrl: "1TerO3uK7_U" },
         { id: 'ps5-11', title: "Tekken 8", price: "R$ 349,90", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/library_600x900.jpg", platform: "PS5", videoUrl: "vH_u_6Z26Z4" },
         { id: 'ps5-12', title: "Alan Wake 2", price: "R$ 270,00", image: "https://cdn2.steamgriddb.com/grid/a7147fd59ab64d16e49e819733ad2187.png", platform: "PS5", videoUrl: "dlQ3Fe7Apx4" }
@@ -33,14 +33,14 @@ let gamesData = {
     ],
     xbox: [
         { id: 'xb-1', title: "Halo Infinite", price: "R$ 299,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1240440/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "PyMlV5_K6Wk" },
-        { id: 'xb-2', title: "Forza Horizon 5", price: "R$ 299,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "FYH9n37B7Yw" },
-        { id: 'xb-3', title: "Starfield", price: "R$ 349,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1716740/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "kfYEiTdsyas" },
+        { id: 'xb-2', title: "Forza Horizon 5", price: "R$ 149,50", oldPrice: "R$ 299,00", promo: true, discount: "-50%", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "FYH9n37B7Yw" },
+        { id: 'xb-3', title: "Starfield", price: "R$ 279,20", oldPrice: "R$ 349,00", promo: true, discount: "-20%", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1716740/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "kfYEiTdsyas" },
         { id: 'xb-4', title: "Sea of Thieves", price: "R$ 199,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1172620/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "h70XNf8tVvM" },
         { id: 'xb-5', title: "Gears 5", price: "R$ 199,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1097840/library_600x900.jpg", platform: "Xbox One", videoUrl: "kSeY_at7R70" },
         { id: 'xb-6', title: "Psychonauts 2", price: "R$ 249,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/607080/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "Z8fD_C0Z3hI" },
         { id: 'xb-7', title: "Hi-Fi RUSH", price: "R$ 149,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817230/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "pgd4aU56K_0" },
         { id: 'xb-8', title: "Flight Simulator", price: "R$ 299,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1250410/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "TYqJALlYmO0" },
-        { id: 'xb-9', title: "Hellblade II", price: "R$ 229,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1271310/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "2TR0gaG01do" },
+        { id: 'xb-9', title: "Hellblade II", price: "R$ 183,20", oldPrice: "R$ 229,00", promo: true, discount: "-20%", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1271310/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "2TR0gaG01do" },
         { id: 'xb-10', title: "Grounded", price: "R$ 149,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/962130/library_600x900.jpg", platform: "Xbox Series X|S", videoUrl: "Z2ZpE0m2S6k" },
         { id: 'xb-11', title: "Cuphead", price: "R$ 36,99", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268910/library_600x900.jpg", platform: "Xbox One", videoUrl: "H_I_0v-o9_s" },
         { id: 'xb-12', title: "Ori", price: "R$ 129,00", image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1057090/library_600x900.jpg", platform: "Xbox One", videoUrl: "knXpT9K_E_E" }
@@ -150,10 +150,12 @@ const xboxOfferSlides = [
 // FUNÇÕES DE RENDERIZAÇÃO
 // ==========================================
 function createGameCard(game) {
+    const isPromo = game.promo === true;
     return `
-        <a href="game-details.html?id=${game.id}" class="game-card">
+        <a href="game-details.html?id=${game.id}" class="game-card ${isPromo ? 'promo-card' : ''}">
             <div class="card-image-wrapper">
                 <img src="${game.image}" alt="${game.title}" class="card-image">
+                ${isPromo ? `<div class="promo-badge">${game.discount}</div>` : ''}
                 <div class="card-overlay">
                     <div class="card-info">
                         <div class="card-platform">
@@ -161,7 +163,10 @@ function createGameCard(game) {
                             ${game.platform}
                         </div>
                         <h3 class="card-title">${game.title}</h3>
-                        <div class="card-price">${game.price}</div>
+                        <div class="card-price-container">
+                            ${isPromo ? `<span class="old-price-card">${game.oldPrice}</span>` : ''}
+                            <div class="card-price">${game.price}</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,14 +175,72 @@ function createGameCard(game) {
 }
 
 function renderGames() {
-    const gridPs5 = document.getElementById('grid-ps5');
-    const gridPs4 = document.getElementById('grid-ps4');
+    const gridPlaystation = document.getElementById('grid-playstation');
     const gridXbox = document.getElementById('grid-xbox');
 
-    if (gridPs5) gridPs5.innerHTML = gamesData.ps5.map(createGameCard).join('');
-    if (gridPs4) gridPs4.innerHTML = gamesData.ps4.map(createGameCard).join('');
+    if (gridPlaystation) {
+        // Unificar PS4 e PS5, removendo duplicatas visuais por título
+        const seenTitles = new Set();
+        const unifiedPS = [];
+        
+        // Ordenar promoções primeiro
+        const allGames = [...gamesData.ps5, ...gamesData.ps4].sort((a, b) => {
+            if (a.promo && !b.promo) return -1;
+            if (!a.promo && b.promo) return 1;
+            return 0;
+        });
+
+        allGames.forEach(game => {
+            if (!seenTitles.has(game.title)) {
+                seenTitles.add(game.title);
+                unifiedPS.push(game);
+            }
+        });
+        
+        gridPlaystation.innerHTML = unifiedPS.map(createGameCard).join('');
+    }
+    
     if (gridXbox) gridXbox.innerHTML = gamesData.xbox.map(createGameCard).join('');
 }
+
+window.filterByCategory = function(category, btn) {
+    // UI Update
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const grid = document.getElementById('grid-playstation');
+    if (!grid) return;
+
+    const seenTitles = new Set();
+    const allGames = [...gamesData.ps5, ...gamesData.ps4].sort((a, b) => (a.promo ? -1 : 1));
+    
+    let filtered = [];
+    allGames.forEach(game => {
+        if (!seenTitles.has(game.title)) {
+            let match = false;
+            if (category === 'all') match = true;
+            else if (category === 'promo') match = game.promo === true;
+            else if (category === 'ps5') match = game.platform === 'PS5';
+
+            if (match) {
+                seenTitles.add(game.title);
+                filtered.push(game);
+            }
+        }
+    });
+
+    grid.innerHTML = filtered.map(createGameCard).join('');
+    // Animar a entrada dos novos cards
+    grid.querySelectorAll('.game-card').forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            card.style.transition = 'all 0.4s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, i * 30);
+    });
+};
 
 function initHeroSlider() {
     const slidesContainer = document.querySelector('.slides-container');
@@ -186,9 +249,11 @@ function initHeroSlider() {
     if (!slidesContainer || !controlsContainer) return;
 
     let activeSlides = [];
-    if (document.getElementById('grid-ps5')) {
+    if (document.getElementById('grid-playstation')) {
+        console.log("Slider: Carregando PlayStation slides");
         activeSlides = psOfferSlides;
     } else if (document.getElementById('grid-xbox')) {
+        console.log("Slider: Carregando Xbox slides");
         activeSlides = xboxOfferSlides;
     } else {
         return;
@@ -515,46 +580,122 @@ function initGameDetails() {
     if (!gameId) { detailsContainer.innerHTML = "<h1 style='color:white'>Jogo não encontrado.</h1>"; return; }
     
     let foundGame = null;
+    let availablePlatforms = [];
+    
+    // Encontrar o jogo base
     for (const platform in gamesData) {
         const game = gamesData[platform].find(g => g.id === gameId);
         if (game) { foundGame = game; break; }
     }
     
     if (!foundGame) { detailsContainer.innerHTML = "<h1 style='color:white'>Jogo não encontrado.</h1>"; return; }
-    
-    const isPS = foundGame.platform.includes('PS'), colorClass = isPS ? 'var(--ps-blue)' : 'var(--xbox-green)', iconClass = isPS ? 'fa-playstation' : 'fa-xbox';
-    
-    // Injetar o vídeo de fundo (se houver videoUrl)
-    const bgBlur = document.getElementById('details-bg-blur');
-    if (bgBlur) {
-        if (foundGame.videoUrl) {
-            bgBlur.innerHTML = `<iframe class="details-video-bg" src="https://www.youtube.com/embed/${foundGame.videoUrl}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=${foundGame.videoUrl}&disablekb=1&modestbranding=1" frameborder="0"></iframe>`;
-        } else {
-            bgBlur.style.backgroundImage = `url('${foundGame.image}')`;
+
+    // Buscar todas as plataformas reais onde este título existe
+    for (const plat in gamesData) {
+        if (gamesData[plat].some(g => g.title === foundGame.title)) {
+            availablePlatforms.push(plat.toUpperCase());
         }
     }
     
-    detailsContainer.innerHTML = `
-        <div class="details-layout">
-            <div class="details-image-container">
-                <img src="${foundGame.image}" alt="${foundGame.title}" class="details-image">
-            </div>
-            <div class="details-info">
-                <div class="details-platform" style="color: ${colorClass};">
-                    <i class="fa-brands ${iconClass}"></i> ${foundGame.platform}
+    const isPS = foundGame.platform.includes('PS');
+    const colorClass = isPS ? 'var(--ps-blue)' : 'var(--xbox-green)';
+    const iconClass = isPS ? 'fa-playstation' : 'fa-xbox';
+    
+    // Injetar Background Imersivo
+    const bgImage = document.getElementById('details-bg-image');
+    const bgVideo = document.getElementById('details-bg-video');
+    
+    if (bgImage) {
+        bgImage.style.backgroundImage = `url('${foundGame.image}')`;
+    }
+
+    
+    // Lógica de compatibilidade
+    let compatibilityHtml = '';
+    if (isPS) {
+        if (foundGame.platform === 'PS4') {
+            compatibilityHtml = `
+                <div class="compatibility-note">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><strong>Compatibilidade:</strong> Esta versão de PS4 funciona perfeitamente no <strong>PS4</strong> e também no <strong>PS5</strong> via retrocompatibilidade.</span>
+                </div>`;
+        } else {
+            compatibilityHtml = `
+                <div class="compatibility-note">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span><strong>Desempenho:</strong> Versão otimizada para <strong>PS5</strong>. Carregamentos ultra-rápidos e Ray Tracing.</span>
+                </div>`;
+        }
+    }
+
+    // Seletor de plataforma para PlayStation
+    let platformSelectorHtml = '';
+    if (isPS && (availablePlatforms.includes('PS4') || availablePlatforms.includes('PS5'))) {
+        platformSelectorHtml = `
+            <div class="platform-selector-group">
+                <div class="platform-selector-label">Escolha sua Plataforma:</div>
+                <div class="platform-options">
+                    ${availablePlatforms.includes('PS5') ? `
+                        <div class="platform-opt ps-opt ${foundGame.platform === 'PS5' ? 'active' : ''}" onclick="selectPlatform('PS5', '${foundGame.title}')">
+                            <i class="fa-brands fa-playstation"></i>
+                            <span>PS5</span>
+                        </div>` : ''}
+                    ${availablePlatforms.includes('PS4') ? `
+                        <div class="platform-opt ps-opt ${foundGame.platform === 'PS4' ? 'active' : ''}" onclick="selectPlatform('PS4', '${foundGame.title}')">
+                            <i class="fa-brands fa-playstation"></i>
+                            <span>PS4</span>
+                        </div>` : ''}
                 </div>
-                <h1 class="details-title">${foundGame.title}</h1>
-                <p class="details-desc">Experimente a emoção de ${foundGame.title}. Disponível para ${foundGame.platform}.</p>
-                <div class="details-price-box">
-                    <div class="details-price">${foundGame.price}</div>
-                    <button class="buy-btn-huge" onclick="buyGame('${foundGame.title.replace(/'/g, "\\'")}')" style="background: ${isPS ? 'linear-gradient(135deg, var(--ps-blue-light), #00bfff)' : 'linear-gradient(135deg, var(--xbox-green-light), #1ed760)'};">
-                        <i class="fa-solid fa-cart-shopping"></i> Comprar Agora
-                    </button>
+            </div>
+        `;
+    }
+
+    detailsContainer.innerHTML = `
+        <div class="details-hero-section">
+            <div class="details-hero-bg" id="hero-bg" style="background-image: url('${foundGame.image}')"></div>
+            <div class="details-hero-overlay"></div>
+            
+            <div class="details-main-content">
+                <div class="details-poster-area">
+                    <img src="${foundGame.image}" alt="${foundGame.title}" class="details-poster-img">
+                </div>
+                <div class="details-text-area">
+                    <div class="details-badge">
+                        <i class="fa-brands ${iconClass}"></i> ${foundGame.platform}
+                    </div>
+                    <h1 class="details-main-title">${foundGame.title}</h1>
+                    <div class="details-main-price">${foundGame.price}</div>
+                    
+                    <div class="details-main-description">
+                        Mergulhe no universo de ${foundGame.title}. Desfrute de gráficos de última geração, 
+                        tempos de resposta imediatos e uma imersão sonora sem precedentes. 
+                        A versão definitiva para ${foundGame.platform} espera por você.
+                    </div>
+
+                    <div class="details-selectors">
+                        ${platformSelectorHtml}
+                        ${compatibilityHtml}
+                    </div>
+
+                    <div class="details-main-actions">
+                        <button class="action-buy-btn" onclick="buyGame('${foundGame.title}', '${foundGame.platform}')">
+                            <i class="fa-solid fa-cart-shopping"></i> Comprar Agora
+                        </button>
+                        <button class="action-wish-btn"><i class="fa-regular fa-heart"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
     `;
 }
+
+window.selectPlatform = function(platform, title) {
+    const platKey = platform.toLowerCase();
+    const game = gamesData[platKey].find(g => g.title === title);
+    if (game) {
+        window.location.href = `game-details.html?id=${game.id}`;
+    }
+};
 
 function createModalContainer() {
     let modal = document.getElementById('global-modal');
@@ -578,14 +719,11 @@ window.closeModal = function() {
 // ==========================================
 // FUNÇÃO DE COMPRA VIA WHATSAPP
 // ==========================================
-function buyGame(gameTitle) {
+function buyGame(gameTitle, platform) {
     const phone = "5594991149412";
-    const message = encodeURIComponent(`Olá, Gostaria de comprar "${gameTitle}"`);
+    const message = encodeURIComponent(`Olá, Gostaria de comprar "${gameTitle}" para ${platform || 'minha plataforma'}`);
     const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
     
-    // Pequeno efeito visual antes de redirecionar (opcional)
-    console.log(`Iniciando compra de: ${gameTitle}`);
-    
-    // Abre em nova aba
+    console.log(`Iniciando compra de: ${gameTitle} (${platform})`);
     window.open(whatsappUrl, '_blank');
 }

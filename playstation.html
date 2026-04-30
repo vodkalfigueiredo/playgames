@@ -25,12 +25,13 @@
     <nav class="navbar">
         <div class="nav-left">
             <a href="index.html" class="brand-logo">
-                <i class="fa-solid fa-gamepad"></i>
-                <span>PlayGames</span>
+                <div class="nav-logo-digital">
+                    <span class="logo-part-1">Play</span>
+                    <span class="logo-part-2">Games</span>
+                </div>
             </a>
             <ul class="nav-links" id="nav-links-menu">
-                <li><a href="#ps5">PlayStation 5</a></li>
-                <li><a href="#ps4">PlayStation 4</a></li>
+                <li><a href="#playstation">Catálogo Completo</a></li>
                 <li><a href="index.html">Voltar ao Portal</a></li>
             </ul>
         </div>
@@ -55,24 +56,22 @@
     </section>
 
     <main class="main-content">
-        <section id="ps5" class="category-section">
+        <section id="playstation" class="category-section">
             <div class="section-header">
                 <div class="section-title-wrapper">
                     <i class="fa-brands fa-playstation section-icon ps-color"></i>
-                    <h2>Jogos de PlayStation 5</h2>
+                    <div class="title-meta">
+                        <h2>Catálogo PlayStation</h2>
+                        <p class="section-subtitle">Explore os melhores títulos de PS4 e PS5 em um só lugar.</p>
+                    </div>
+                </div>
+                <div class="section-filters">
+                    <button class="filter-btn active" onclick="filterByCategory('all', this)">Todos</button>
+                    <button class="filter-btn" onclick="filterByCategory('promo', this)">Promoções</button>
+                    <button class="filter-btn" onclick="filterByCategory('ps5', this)">Apenas PS5</button>
                 </div>
             </div>
-            <div class="games-grid" id="grid-ps5"></div>
-        </section>
-
-        <section id="ps4" class="category-section">
-            <div class="section-header">
-                <div class="section-title-wrapper">
-                    <i class="fa-brands fa-playstation section-icon ps-color"></i>
-                    <h2>Jogos de PlayStation 4</h2>
-                </div>
-            </div>
-            <div class="games-grid" id="grid-ps4"></div>
+            <div class="games-grid" id="grid-playstation"></div>
         </section>
     </main>
 
