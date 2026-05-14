@@ -13,11 +13,6 @@
 </head>
 <body class="portal-body">
 
-    <!-- Custom Cursor -->
-    <div id="custom-cursor" class="custom-cursor">
-        <div class="cursor-ring"></div>
-        <div class="cursor-dot"></div>
-    </div>
 
     <!-- Flash Overlay for exit animation -->
     <div id="exit-flash" class="exit-flash"></div>
@@ -36,78 +31,97 @@
         </div>
     </div>
 
-    <!-- ===== PLATFORM SELECTOR ===== -->
-    <div id="platform-selector" class="platform-selector hidden">
+    <!-- ===== NEW PLATFORM SELECTOR ===== -->
+    <div id="platform-selector-new" class="platform-selector-new hidden">
+        <!-- Background Image -->
+        <div class="mario-background"></div>
+        <div class="overlay-gradient"></div>
+        
+        <div class="content-wrapper">
+            <h1 class="main-title">Escolha sua Plataforma</h1>
+            <p class="subtitle">Selecione o seu console para entrar no universo PlayGames</p>
 
-        <!-- Divider Line -->
-        <div class="divider-line" id="divider-line"></div>
-
-        <!-- PlayStation Half -->
-        <div class="ps-half platform-half" id="ps-half" data-platform="ps">
-            <canvas class="particles-canvas" id="ps-canvas"></canvas>
-
-            <div class="half-content">
-                <!-- Ambient glow orbs -->
-                <div class="orb orb-1"></div>
-                <div class="orb orb-2"></div>
-
-                <!-- Platform logo icon -->
-                <div class="platform-icon-wrapper" id="ps-icon">
+            <div class="options-container">
+                <a href="playstation" class="option-card ps-card">
+                    <div class="card-glow ps-glow"></div>
                     <i class="fa-brands fa-playstation"></i>
-                </div>
+                    <span>PlayStation</span>
+                </a>
+                
+                <button id="help-btn" class="option-card help-card">
+                    <div class="card-glow help-glow"></div>
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Ajuda</span>
+                </button>
 
-                <!-- Decorative ring -->
-                <div class="icon-ring"></div>
-
-                <!-- Text content -->
-                <div class="half-text">
-                    <h2 class="platform-name">PlayStation</h2>
-                    <p class="platform-sub">PS4 &amp; PS5 — Exclusivos incríveis</p>
-                    <a href="playstation.html" class="enter-btn ps-btn" id="ps-enter-btn">
-                        <span>Entrar no Universo</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Floating badges -->
-                <div class="float-badge badge-top-left">PS5</div>
-                <div class="float-badge badge-bottom-right">PS4</div>
-            </div>
-        </div>
-
-        <!-- Xbox Half -->
-        <div class="xbox-half platform-half" id="xbox-half" data-platform="xbox">
-            <canvas class="particles-canvas" id="xbox-canvas"></canvas>
-
-            <div class="half-content">
-                <!-- Ambient glow orbs -->
-                <div class="orb orb-1"></div>
-                <div class="orb orb-2"></div>
-
-                <!-- Platform logo icon -->
-                <div class="platform-icon-wrapper" id="xbox-icon">
+                <a href="xbox" class="option-card xbox-card">
+                    <div class="card-glow xbox-glow"></div>
                     <i class="fa-brands fa-xbox"></i>
-                </div>
-
-                <!-- Decorative ring -->
-                <div class="icon-ring"></div>
-
-                <!-- Text content -->
-                <div class="half-text">
-                    <h2 class="platform-name">Xbox</h2>
-                    <p class="platform-sub">Series X|S — Power your dreams</p>
-                    <a href="xbox.html" class="enter-btn xbox-btn" id="xbox-enter-btn">
-                        <span>Entrar no Universo</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Floating badges -->
-                <div class="float-badge badge-top-right">Series X</div>
-                <div class="float-badge badge-bottom-left">Series S</div>
+                    <span>Xbox</span>
+                </a>
             </div>
         </div>
 
+        <!-- Modal de Ajuda -->
+        <div id="help-modal" class="help-modal hidden">
+            <div class="help-modal-content">
+                <button class="close-help" id="close-help-btn">&times;</button>
+                <div class="help-icon"><i class="fa-solid fa-headset"></i></div>
+                <h2>Central de Ajuda</h2>
+                <p class="help-intro-text">Selecione a categoria do seu problema para verificar as soluções mais comuns:</p>
+                
+                <div class="help-accordion">
+                    <!-- Controle -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span><i class="fa-solid fa-gamepad"></i> Problema no Controle</span>
+                            <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="help-list-issues">
+                                <li onclick="requestSupport('Problema no Controle', 'Drift no Analógico')"><strong>Drift no Analógico:</strong> Câmera ou personagem se move sozinho.</li>
+                                <li onclick="requestSupport('Problema no Controle', 'Botão Afundado')"><strong>Botão Afundado:</strong> Botão prende ao pressionar ou não retorna.</li>
+                                <li onclick="requestSupport('Problema no Controle', 'Não Conecta/Sincroniza')"><strong>Não Conecta/Sincroniza:</strong> Luz piscando mas não pareia com o aparelho.</li>
+                                <li onclick="requestSupport('Problema no Controle', 'Bateria Viciada')"><strong>Bateria Viciada:</strong> Descarrega muito rápido mesmo após carga completa.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Console -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span><i class="fa-solid fa-server"></i> Problema no Console</span>
+                            <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="help-list-issues">
+                                <li onclick="requestSupport('Problema no Console', 'Superaquecimento')"><strong>Superaquecimento:</strong> Console desliga sozinho ou cooler muito barulhento.</li>
+                                <li onclick="requestSupport('Problema no Console', 'Não Liga')"><strong>Não Liga:</strong> Aparelho sem nenhum sinal de energia ou bipe.</li>
+                                <li onclick="requestSupport('Problema no Console', 'Luz Branca/Azul da Morte')"><strong>Luz Branca/Azul da Morte:</strong> Liga mas não dá vídeo na TV.</li>
+                                <li onclick="requestSupport('Problema no Console', 'Leitor de Disco')"><strong>Leitor de Disco:</strong> Não puxa, não lê ou ejeta o disco sozinho.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Computador -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span><i class="fa-solid fa-desktop"></i> Problema no Computador</span>
+                            <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="help-list-issues">
+                                <li onclick="requestSupport('Problema no Computador', 'Tela Azul (BSOD)')"><strong>Tela Azul (BSOD):</strong> Erro de sistema que reinicia o PC.</li>
+                                <li onclick="requestSupport('Problema no Computador', 'Jogo Fechando (Crash)')"><strong>Jogo Fechando (Crash):</strong> Jogo fecha e volta para a área de trabalho.</li>
+                                <li onclick="requestSupport('Problema no Computador', 'Desempenho Baixo (FPS)')"><strong>Desempenho Baixo (FPS):</strong> Jogo travando ou lento.</li>
+                                <li onclick="requestSupport('Problema no Computador', 'Artefatos na Tela')"><strong>Artefatos na Tela:</strong> Falhas visuais, linhas ou cores estranhas (GPU).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p class="help-footer">Em caso de dúvidas sobre compras, contate nosso suporte através do email: <em>suporte@playgames.com</em></p>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
@@ -116,7 +130,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const intro = document.getElementById('intro-screen');
-            const selector = document.getElementById('platform-selector');
+            const selector = document.getElementById('platform-selector-new');
             
             // Forçar a saída após 3 segundos NO MÁXIMO
             setTimeout(function() {
@@ -129,9 +143,6 @@
                         if (selector) {
                             selector.classList.remove('hidden');
                             selector.style.display = 'flex';
-                            // Ativar as metades
-                            document.getElementById('ps-half').classList.add('revealed');
-                            document.getElementById('xbox-half').classList.add('revealed');
                         }
                     }, 800);
                 }

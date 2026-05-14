@@ -442,10 +442,13 @@ function navigateWithEffect(url) {
 }
 
 function initPortal() {
-    const introScreen = document.getElementById('intro-screen'), platformSelector = document.getElementById('platform-selector');
+    const introScreen = document.getElementById('intro-screen');
+    const platformSelector = document.getElementById('platform-selector-new') || document.getElementById('platform-selector');
+    
     if (!introScreen || !platformSelector) return;
+    
     const isTouch = isTouchDevice();
-    // Partículas (opcional, não trava se falhar)
+    
     try {
         const introParticles = createParticleSystem(document.getElementById('intro-canvas'), {
             count: isTouch ? 25 : 60, speed: 0.4, minR: 0.5, maxR: 2.5, maxAlpha: 0.5, glow: !isTouch,
@@ -455,11 +458,9 @@ function initPortal() {
         window.introParticlesRef = introParticles;
     } catch(e) { console.warn("Erro ao iniciar partículas da intro"); }
 
-    // Reduzi para 1200ms para ser quase imediato após o carregamento
     const introDuration = 1200; 
 
     setTimeout(() => {
-        // Usar estilo direto em vez de classe CSS para evitar problemas de cache
         introScreen.style.transition = 'opacity 0.8s ease, visibility 0.8s';
         introScreen.style.opacity = '0';
         introScreen.style.visibility = 'hidden';
@@ -470,35 +471,54 @@ function initPortal() {
             
             platformSelector.classList.remove('hidden');
             platformSelector.style.display = 'flex'; 
-
-            setTimeout(() => {
-                const psHalf = document.getElementById('ps-half');
-                const xboxHalf = document.getElementById('xbox-half');
-                if (psHalf) psHalf.classList.add('revealed');
-                setTimeout(() => { 
-                    if (xboxHalf) xboxHalf.classList.add('revealed'); 
-                }, 150);
-            }, 80);
-
-            // Partículas das metades (opcional)
-            setTimeout(() => {
-                try {
-                    const psCanvas = document.getElementById('ps-canvas');
-                    const xboxCanvas = document.getElementById('xbox-canvas');
-                    if (psCanvas) createParticleSystem(psCanvas, { count: isTouch ? 28 : 55, speed: 0.5, minR: 0.5, maxR: 2.5, maxAlpha: 0.6, glow: !isTouch, colors: ['#0070d1', '#00aaff', '#00c6ff', '#ffffff', '#cce8ff'] }).start();
-                    if (xboxCanvas) createParticleSystem(xboxCanvas, { count: isTouch ? 28 : 55, speed: 0.5, minR: 0.5, maxR: 2.5, maxAlpha: 0.6, glow: !isTouch, colors: ['#159b15', '#52d45c', '#7fff7f', '#ffffff', '#c8ffd4'] }).start();
-                } catch(e) {}
-            }, 600);
         }, 800);
     }, introDuration);
 
-    const psBtn = document.getElementById('ps-enter-btn'), xboxBtn = document.getElementById('xbox-enter-btn');
-    if (!isTouch) {
-        if (psBtn) psBtn.addEventListener('click', (e) => { e.preventDefault(); navigateWithEffect('playstation.html'); });
-        if (xboxBtn) xboxBtn.addEventListener('click', (e) => { e.preventDefault(); navigateWithEffect('xbox.html'); });
-        document.getElementById('ps-half')?.addEventListener('click', (e) => { if (!e.target.closest('.enter-btn')) navigateWithEffect('playstation.html'); });
-        document.getElementById('xbox-half')?.addEventListener('click', (e) => { if (!e.target.closest('.enter-btn')) navigateWithEffect('xbox.html'); });
+    // Help Modal Logic
+    const helpBtn = document.getElementById('help-btn');
+    const helpModal = document.getElementById('help-modal');
+    const closeHelpBtn = document.getElementById('close-help-btn');
+
+    if (helpBtn && helpModal) {
+        helpBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            helpModal.classList.remove('hidden');
+        });
     }
+
+    if (closeHelpBtn && helpModal) {
+        closeHelpBtn.addEventListener('click', () => {
+            helpModal.classList.add('hidden');
+        });
+    }
+
+    // Fecha o modal ao clicar fora do conteúdo
+    if (helpModal) {
+        helpModal.addEventListener('click', (e) => {
+            if (e.target === helpModal) {
+                helpModal.classList.add('hidden');
+            }
+        });
+    }
+
+    // Accordion Logic
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Fecha todos os outros accordions
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+
+            // Se não estava ativo, abre
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
 }
 
 function initSearchBar() {
@@ -532,8 +552,11 @@ function safeInit() {
         console.error("Erro initPortal:", e);
         const intro = document.getElementById('intro-screen');
         if (intro) intro.style.display = 'none';
-        const selector = document.getElementById('platform-selector');
-        if (selector) selector.classList.remove('hidden');
+        const selector = document.getElementById('platform-selector-new') || document.getElementById('platform-selector');
+        if (selector) {
+            selector.classList.remove('hidden');
+            selector.style.display = 'flex';
+        }
     }
     
     // 2. Renderização de Jogos (Crucial para as páginas internas)
@@ -548,7 +571,7 @@ function safeInit() {
     try { initHeroSlider(); } catch(e) { console.error("Erro initHeroSlider:", e); }
     try { initGameDetails(); } catch(e) { console.error("Erro initGameDetails:", e); }
     try { initSearchBar(); } catch(e) { console.error("Erro initSearchBar:", e); }
-    try { initCustomCursor(); } catch(e) { console.error("Erro initCustomCursor:", e); }
+    // try { initCustomCursor(); } catch(e) { console.error("Erro initCustomCursor:", e); }
 }
 
 document.addEventListener('DOMContentLoaded', safeInit);
@@ -560,16 +583,13 @@ window.addEventListener('load', () => {
         if (intro && window.getComputedStyle(intro).display !== 'none') {
             console.warn("Segurança: Removendo tela de intro via fallback.");
             intro.style.display = 'none';
-            const selector = document.getElementById('platform-selector');
+            const selector = document.getElementById('platform-selector-new') || document.getElementById('platform-selector');
             if (selector) {
                 selector.classList.remove('hidden');
                 selector.style.display = 'flex';
-                // Revela as metades caso não tenham sido reveladas
-                document.getElementById('ps-half')?.classList.add('revealed');
-                document.getElementById('xbox-half')?.classList.add('revealed');
             }
         }
-    }, 2000); // Se em 2 segundos após o 'load' total ainda estiver lá, remove.
+    }, 2000);
 });
 
 function initGameDetails() {
@@ -727,3 +747,15 @@ function buyGame(gameTitle, platform) {
     console.log(`Iniciando compra de: ${gameTitle} (${platform})`);
     window.open(whatsappUrl, '_blank');
 }
+
+// ==========================================
+// FUNÇÃO DE SUPORTE VIA WHATSAPP
+// ==========================================
+window.requestSupport = function(categoria, problema) {
+    const phone = "5594991149412";
+    const message = encodeURIComponent(`Olá, preciso de ajuda com: *${categoria}*\n\nDetalhe do problema: _${problema}_`);
+    const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+    
+    console.log(`Iniciando suporte: ${categoria} - ${problema}`);
+    window.open(whatsappUrl, '_blank');
+};
